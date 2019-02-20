@@ -1,0 +1,19 @@
+version: '3'
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      #Infos de connexion à la bdd dans le fichier connect.php
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: gestion_produits
+    volumes:
+      - ./database/:/docker-entrypoint-initdb.d
+
+  php:
+    build: .
+    links:
+      - db
+    volumes:
+      - ./www:/workdir
+    ports:
+      - "8080:80"
