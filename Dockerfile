@@ -1,4 +1,4 @@
-FROM php:5-apache
+FROM php:5.6-fpm
 
 COPY ./www/ /workdir
 RUN usermod -u 1000 www-data
