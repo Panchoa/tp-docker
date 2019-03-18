@@ -73,8 +73,8 @@
                             while ($ressource = mysqli_fetch_assoc($res)) {
                                 if ($ressource['RE_type'] == 'img') {
                                     echo '<div class="img">';
-                                    echo '<img src="'.$ressource['RE_url'].'" class="img-thumbnail thumb" data-id="'.$ressource['RE_id'].'">';
-                                    echo '<img src="img/trash.svg" class="icon trash" data-id="'.$ressource['RE_id'].'">';
+                                    echo '<img src="'.$ressource['RE_url'].'" class="img-thumbnail thumb" conf-id="'.$ressource['RE_id'].'">';
+                                    echo '<img src="img/trash.svg" class="icon trash" conf-id="'.$ressource['RE_id'].'">';
                                     echo '</div>';
                                 }
                             }
@@ -105,7 +105,7 @@
     <script>
         $('img.icon.trash').click(function() {
             if(confirm("Etes-vous sûr de vouloir supprimer cette photo?")) {
-                var RE_id = $(this).attr('data-id');
+                var RE_id = $(this).attr('conf-id');
                 
                 request = $.ajax({
                     method: "POST",
