@@ -19,10 +19,21 @@ services:
       MYSQL_DATABASE: gestion_produits
     volumes:
       - ./database/:/docker-entrypoint-initdb.d
-
   php:
     build: .
+    environment:
+          MINIO_ACCESS_KEY: minio_manager
+          MINIO_SECRET_KEY: (3BUhXmT\7
     links:
       - db
+      - minio
     volumes:
       - ./www:/workdir
+  minio:
+    image: minio/minio
+    ports:
+      - "9001:9000"
+    environment:
+      MINIO_ACCESS_KEY: minio_manager
+      MINIO_SECRET_KEY: (3BUhXmT\7
+    command: server /upload
