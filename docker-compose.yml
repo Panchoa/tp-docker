@@ -26,5 +26,3 @@ services:
       - db
     volumes:
       - ./www:/workdir
-    ports:
-      - "8080:80"
